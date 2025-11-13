@@ -1,15 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const taskRouter = require('./src/routes/route.js');
-
 const app = express();
 const PORT = 3001;
-
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', taskRouter);
+
+app.get('/api/tasks', (req, res) => {
+  res.json({ tasks: [] });
+});
 
 app.get('/health', (req, res) => {
   res.json({ status: 'Server is running' });
@@ -18,4 +20,8 @@ app.get('/health', (req, res) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'error' });
+});
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+  console.log('Connected');
 });
