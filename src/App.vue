@@ -27,9 +27,8 @@
     </div>
   </div>
 
-    <!-- Отладочная панель -->
-    <div class="debug-panel">
-      <h3>Debug Info</h3>
+    <div class="Info-panel">
+      <h3>Info Info</h3>
       <pre>Loading: {{ loading }}</pre>
       <pre>Error: {{ error }}</pre>
       <pre>Tasks Data: {{ JSON.stringify(tasks, null, 2) }}</pre>
